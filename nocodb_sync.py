@@ -2,7 +2,7 @@ import requests
 
 # 🔹 Replace with your actual NocoDB instance & API token
 NOCODB_API_URL = "https://app.nocodb.com/#/wozkj4fx/pcxgyw39qi99zg9/api/v1"
-API_TOKEN = "xc-token: fjyPX0Bd-kEhlakJfsqjhYO4n1619rogrx-fwHNS"
+API_TOKEN = "fjyPX0Bd-kEhlakJfsqjhYO4n1619rogrx-fwHNS"
 
 # 🔹 Headers for authentication
 HEADERS = {
