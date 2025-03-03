@@ -1,4 +1,4 @@
-name: Run NocoDB Sync
+name: Run NocoDB Sync Translations
 
 on:
   schedule:
