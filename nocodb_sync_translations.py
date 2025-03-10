@@ -1,8 +1,8 @@
 import requests
 
 # 🔹 Replace with your actual NocoDB instance & API token
-NOCODB_API_URL = "https://app.nocodb.com/api/v1/db/data/v1"
-API_TOKEN = "fjyPX0Bd-kEhlakJfsqjhYO4n1619rogrx-fwHNS"
+NOCODB_API_URL = "https://app.nocodb.com/api/v2/db/data/v2"
+API_TOKEN = "pRns3hnE7P-gPXqDg79rzLDwm6gSqPoBifQJv8eN"
 
 # 🔹 Headers for authentication
 HEADERS = {
