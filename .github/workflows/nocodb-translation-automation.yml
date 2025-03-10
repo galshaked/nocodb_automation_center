@@ -1,0 +1,26 @@
+name: NocoDB Translation Automation
+
+on:
+  repository_dispatch:
+    types: [new-main-article]
+
+jobs:
+  create-translations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run translation automation script
+        env:
+          NOCODB_API_URL: ${{ secrets.NOCODB_API_URL }}
+          NOCODB_API_TOKEN: ${{ secrets.NOCODB_API_TOKEN }}
+        run: python automation.py
