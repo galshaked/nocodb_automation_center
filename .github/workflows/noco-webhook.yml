@@ -22,5 +22,5 @@ jobs:
       - name: Run script to process webhook
         env:
           NOCO_API_URL: "https://app.nocodb.com"
-          NOCO_API_TOKEN: ${{ OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}
+          NOCO_API_TOKEN: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}
         run: python process_webhook.py
