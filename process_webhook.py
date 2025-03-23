@@ -6,7 +6,7 @@ NOCO_API_URL = "http://app.nocodb.com/api/v2"
 NOCO_API_TOKEN = os.getenv("OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w")
 
 HEADERS = {
-    "xc-token": OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w,
+    "xc-token": "OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w",
     "Content-Type": "application/json"
 }
 
