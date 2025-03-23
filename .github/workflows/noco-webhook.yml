@@ -1,8 +1,12 @@
 name: Process NocoDB Webhook
 
+#on:
+ # repository_dispatch:
+  #  types: [noco_webhook]
 on:
-  repository_dispatch:
-    types: [noco_webhook]
+  schedule:
+    - cron: "*/10 * * * *"  # Runs every 10 minutes
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   process_webhook:
