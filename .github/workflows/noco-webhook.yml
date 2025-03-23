@@ -1,0 +1,26 @@
+name: Process NocoDB Webhook
+
+on:
+  repository_dispatch:
+    types: [noco_webhook]
+
+jobs:
+  process_webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script to process webhook
+        env:
+          NOCO_API_URL: "https://app.nocodb.com"
+          NOCO_API_TOKEN: ${{ OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}
+        run: python process_webhook.py
