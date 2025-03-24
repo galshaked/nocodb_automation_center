@@ -45,15 +45,13 @@ def create_translation_records(article_serial):
     print("languages list:")
     print(languages)
     #for lang in languages:
-       # payload = {
-       #     'Main Article': article_serial,  # Linking to the main article
-        #    'Language Code': lang,  # Assigning language
-       # }
-
-    payload = {
-        "Main Article": "Serial-test-git-schedule",
-         "Language Code": "PT"
-    }
+        payload = {
+          #  'Main Article': article_serial,  # Linking to the main article
+           # 'Language Code': lang,  # Assigning language
+            "Main Article": "Serial-test-git-schedule",  # Linking to the main article
+            "Language Code": "PT",  # Assigning language
+        }
+    
         url = f"{NOCO_BASE_URL}/tables/{TRANSLATIONS_TABLE}/records"
         requests.post(url, headers=HEADERS, json=payload)
 
