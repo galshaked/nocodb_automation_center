@@ -3,28 +3,31 @@ name: Process Updated Articles
 on:
   schedule:
     - cron: '*/5 * * * *'  # Runs every 5 minutes
+    workflow_dispatch:  # Trigger manually via the GitHub UI
 
 jobs:
   process_articles:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch Updated Articles
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      
+      - name: Install dependencies
         run: |
-          RESPONSE=$(curl -X GET "http://app.nocodb.com/api/v2/tables/m3ocvzfbhk8ahk1/records?where(Create_translations,eq,true)" \
-            -H "xc-token: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}")
-          echo "$RESPONSE" > articles.json
-
-      - name: Process Each Article
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: Run script to process articles
+        env:
+          NOCO_BASE_URL: ${{ secrets.https://app.nocodb.com/#/wozkj4fx/pcxgyw39qi99zg9 }}  # Set NocoDB base URL as secret
+          API_KEY: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}         # Set API Key as secret
+          MAIN_ARTICLES_TABLE: "m3ocvzfbhk8ahk1"         # Name of the main articles table
+          TRANSLATIONS_TABLE: "mr422qhi3kt0r4h"  # Name of the translations table
+          LANGUAGES_TABLE: "mhuq2qb2ur6vkgn"                # Name of the languages table
         run: |
-          jq -c '.list[]' articles.json | while read i; do
-            ID=$(echo $i | jq -r '.Serial #')
-            echo "Processing article with Serial #: $SERIAL"
-
-            # (Do whatever processing you need here)
-
-            # Mark as processed
-            curl -X PATCH "https://your-nocodb-instance.com/api/v1/db/data/noco/Main%20Articles/$ID" \
-              -H "xc-token: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}" \
-              -H "Content-Type: application/json" \
-              -d '{"needs_update": false}'
-          done
+          python process_articles.py
