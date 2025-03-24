@@ -1,4 +1,23 @@
 import requests
+import logging
+import os
+logging.basicConfig(level=logging.INFO)
+
+base_url = os.getenv('https://app.nocodb.com/api/v2')  # Base URL from secret
+api_key = os.getenv('OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w')  # API key from secret
+main_articles_url = f"{base_url}m3ocvzfbhk8ahk1/records"  # Construct API URL for main articles table
+
+headers = {
+    "xc-token": api_key
+}
+
+response = requests.get(main_articles_url, headers=headers)
+
+if response.status_code == 200:
+    logging.info("Successfully fetched records:")
+    logging.info(response.json())  # Log the fetched records
+else:
+    logging.error(f"Error: {response.status_code} - {response.text}")
 
 # NocoDB API details
 NOCO_BASE_URL = "https://app.nocodb.com/api/v2"  # Replace with your NocoDB instance and table ID
@@ -6,6 +25,8 @@ API_KEY = "OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w"  # Replace with your API to
 MAIN_ARTICLES_TABLE = "m3ocvzfbhk8ahk1"
 TRANSLATIONS_TABLE = "mr422qhi3kt0r4h"
 LANGUAGES_TABLE = "mhuq2qb2ur6vkgn"
+
+
 
 HEADERS = {
     "xc-token": API_KEY,
@@ -53,11 +74,6 @@ def process_articles():
     for article in articles:
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
         update_main_article(article["Serial #"], {"translations_record_status": "Translations records created"})
-    if response.status_code == 200:
-    logging.info("Successfully fetched records:")
-    logging.info(response.json())  # Log the fetched records
-else:
-    logging.error(f"Error: {response.status_code} - {response.text}")
 
 # Run the script
 process_articles()
