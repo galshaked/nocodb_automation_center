@@ -53,6 +53,11 @@ def process_articles():
     for article in articles:
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
         update_main_article(article["Serial #"], {"translations_record_status": "Translations records created"})
+    if response.status_code == 200:
+    logging.info("Successfully fetched records:")
+    logging.info(response.json())  # Log the fetched records
+else:
+    logging.error(f"Error: {response.status_code} - {response.text}")
 
 # Run the script
 process_articles()
