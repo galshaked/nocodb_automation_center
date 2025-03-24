@@ -59,6 +59,7 @@ def update_main_article(article_serial, updates):
 def process_articles():
     """Main function to process articles needing translation."""
     articles = get_main_articles()
+    print("finished get main articles")
     for article in articles:
         print("main loop check")
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
