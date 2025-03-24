@@ -29,6 +29,7 @@ def get_main_articles():
 
 def get_languages():
     """Fetch available languages from the Languages table."""
+    print("IM in languages def")
     url = f"{NOCO_BASE_URL}/tables/{LANGUAGES_TABLE}/records"
     response = requests.get(url, headers=HEADERS)
     print("Response JSON languages:")
@@ -37,6 +38,7 @@ def get_languages():
 
 def create_translation_records(article_serial):
     """Create translation records for each language."""
+    print("IM in create translations def")
     languages = get_languages()
     print("languages list:")
     print(languages)
@@ -50,6 +52,7 @@ def create_translation_records(article_serial):
 
 def update_main_article(article_serial, updates):
     """Update the main article's status."""
+    print("IM in update_main_article def")
     url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records/{article_serial}"
     update_payload = {
         "data": updates
