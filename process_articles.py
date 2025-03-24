@@ -60,6 +60,7 @@ def update_main_article(article_serial, updates):
     update_payload = {
         "data": updates
     }
+    print(update_payload)
     requests.patch(url, headers=HEADERS, json=update_payload)
 
 def process_articles():
