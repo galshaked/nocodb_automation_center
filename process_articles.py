@@ -22,6 +22,8 @@ def get_main_articles():
         "where": '(translations_record_status,"eq","Create translations records")',
     }
     response = requests.get(NOCO_BASE_URL, headers=HEADERS, params=querystring)
+    print("Response JSON:")
+    print(response.json())
     return response.json().get("data", [])  # Assuming "data" contains the records
 
 def get_languages():
