@@ -40,8 +40,8 @@ def create_translation_records(article_serial):
     languages = get_languages()
     for lang in languages:
         payload = {
-            "Serial #": article_serial,  # Linking to the main article
-            "language": lang,  # Assigning language
+            "Main Article": article_serial,  # Linking to the main article
+            "Language Code": lang,  # Assigning language
         }
         url = f"{NOCO_BASE_URL}/tables/{TRANSLATIONS_TABLE}/records"
         requests.post(url, headers=HEADERS, json=payload)
