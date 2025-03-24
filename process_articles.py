@@ -22,7 +22,7 @@ def get_main_articles():
         "where": "(translations_record_status,eq,Create translations records)",
     }
     url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records"
-    response = requests.get(NOCO_BASE_URL, headers=HEADERS, params=querystring)
+    response = requests.get(url, headers=HEADERS, params=querystring)
     print("Response JSON:")
     print(response.json())
     return response.json().get("data", [])  # Assuming "data" contains the records
