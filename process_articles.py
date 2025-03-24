@@ -48,8 +48,8 @@ def create_translation_records(article_serial):
         payload = {
           #  'Main Article': article_serial,  # Linking to the main article
            # 'Language Code': lang,  # Assigning language
-            "Main Article": "Serial-test-git-schedule",  # Linking to the main article
-            "Language Code": "PT",  # Assigning language
+            "Main Article": 'Serial-test-git-schedule',  # Linking to the main article
+            "Language Code": 'PT',  # Assigning language
         }
     
         url = f"{NOCO_BASE_URL}/tables/{TRANSLATIONS_TABLE}/records"
