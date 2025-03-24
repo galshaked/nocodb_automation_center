@@ -50,6 +50,8 @@ def create_translation_records(article_serial):
             "Language Code": lang,  # Assigning language
         }
         print(payload)
+        print("Response Status Code:", response.status_code)
+        print("Response JSON:", response.json())
         url = f"{NOCO_BASE_URL}/tables/{TRANSLATIONS_TABLE}/records"
         requests.post(url, headers=HEADERS, json=payload)
 
