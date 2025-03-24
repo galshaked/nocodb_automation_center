@@ -54,7 +54,6 @@ def create_translation_records(article_serial):
         "Main Article": "Serial-test-git-schedule",
          "Language Code": "PT"
     }
-        print(payload)
         url = f"{NOCO_BASE_URL}/tables/{TRANSLATIONS_TABLE}/records"
         requests.post(url, headers=HEADERS, json=payload)
 
