@@ -19,7 +19,7 @@ def get_main_articles():
     querystring = {
         "offset": "0",
         "limit": "25",
-        "where": '(translations_record_status,eq,Create translations records)',
+        "where": "(translations_record_status,eq,Create translations records)",
     }
     response = requests.get(NOCO_BASE_URL, headers=HEADERS, params=querystring)
     print("Response JSON:")
