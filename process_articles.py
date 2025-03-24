@@ -36,7 +36,7 @@ def get_languages():
     response = requests.get(url, headers=HEADERS)
     print("Response JSON languages:")
     print(response.json())
-    return [lang["Language Code"] for lang in response.json().get("data", [])]  # Assuming 'code' is the language identifier
+    return [lang["Language Code"] for lang in response.json().get("list", [])]  # Assuming 'code' is the language identifier
 
 def create_translation_records(article_serial):
     """Create translation records for each language."""
