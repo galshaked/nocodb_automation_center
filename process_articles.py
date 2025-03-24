@@ -23,7 +23,7 @@ def get_main_articles():
     }
     url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records"
     response = requests.get(url, headers=HEADERS, params=querystring)
-    print("Response JSON:")
+    print("Response JSON main_articles:")
     print(response.json())
     return response.json().get("data", [])  # Assuming "data" contains the records
 
@@ -31,6 +31,8 @@ def get_languages():
     """Fetch available languages from the Languages table."""
     url = f"{NOCO_BASE_URL}/tables/{LANGUAGES_TABLE}/records"
     response = requests.get(url, headers=HEADERS)
+    print("Response JSON languages:")
+    print(response.json())
     return [lang["code"] for lang in response.json().get("data", [])]  # Assuming 'code' is the language identifier
 
 def create_translation_records(article_serial):
