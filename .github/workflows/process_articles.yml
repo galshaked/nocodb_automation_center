@@ -1,0 +1,30 @@
+name: Process Updated Articles
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+
+jobs:
+  process_articles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Updated Articles
+        run: |
+          RESPONSE=$(curl -X GET "http://app.nocodb.com/api/v2/tables/m3ocvzfbhk8ahk1/records?where(Create_translations,eq,true)" \
+            -H "xc-token: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}")
+          echo "$RESPONSE" > articles.json
+
+      - name: Process Each Article
+        run: |
+          jq -c '.list[]' articles.json | while read i; do
+            ID=$(echo $i | jq -r '.Serial #')
+            echo "Processing article with Serial #: $SERIAL"
+
+            # (Do whatever processing you need here)
+
+            # Mark as processed
+            curl -X PATCH "https://your-nocodb-instance.com/api/v1/db/data/noco/Main%20Articles/$ID" \
+              -H "xc-token: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}" \
+              -H "Content-Type: application/json" \
+              -d '{"needs_update": false}'
+          done
