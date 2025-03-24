@@ -24,7 +24,7 @@ jobs:
       
       - name: Run script to process articles
         env:
-          NOCO_BASE_URL: ${{ secrets.https://app.nocodb.com }}  # Set NocoDB base URL as secret
+          #NOCO_BASE_URL: ${{ secrets.https://app.nocodb.com }}  # Set NocoDB base URL as secret
           API_KEY: ${{ secrets.OXUxBBtiQQZDELL51Hg2p6zlqrs_KUIRGze21z-w }}         # Set API Key as secret
           MAIN_ARTICLES_TABLE: "m3ocvzfbhk8ahk1"         # Name of the main articles table
           TRANSLATIONS_TABLE: "mr422qhi3kt0r4h"  # Name of the translations table
