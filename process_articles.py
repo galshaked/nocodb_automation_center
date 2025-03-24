@@ -63,8 +63,7 @@ def process_articles():
     """Main function to process articles needing translation."""
     articles = get_main_articles()
     print("finished get main articles")
-    articles2 = response_json.get("list", [])  # Ensure it defaults to an empty list if 'list' is missing
-    print(f"Number of articles retrieved: {len(articles2)}")
+    print(articles)
     for article in articles:
         print("main loop check")
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
