@@ -72,6 +72,7 @@ def process_articles():
     for article in articles:
         print("main loop check")
         print("Article Data:", article)
+        print("article serial:", article["Serial #"])
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
         update_main_article(article["Serial #"], {"translations_record_status": "Translations records created"})
 
