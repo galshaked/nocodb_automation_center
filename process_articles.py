@@ -29,7 +29,7 @@ def get_main_articles():
     #######################################
     articles_list = response.json().get("list", [])
     
-     ID_list = [0]
+    ID_list = [0]
 
     for i in range(len(articles_list)):  # Iterate over the indices
         temp_art = articles_list[i]  # Get the dictionary
