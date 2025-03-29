@@ -69,14 +69,14 @@ def create_translation_records(article_serial):
         url = f"{NOCO_BASE_URL}/tables/{TRANSLATIONS_TABLE}/records"
         requests.post(url, headers=HEADERS, json=payload)
 
-def update_main_article(article_serial, updates):
+def update_main_article(article_serial):#, updates):
     """Update the main article's status."""
     print("IM in update_main_article def")
  #   temp_ID = temp_art.get("Id")  # Extract "Id"
     url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records"#/{article_serial}"
     update_payload = {
        "Id": article_serial,
-       updates
+       "translations_record_status": "Translations records created"
     }
     print(update_payload)
     print(article_serial)
@@ -96,7 +96,7 @@ def process_articles():
         print(len(articles))
         print(article)
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
-        update_main_article(article["Id"], {"translations_record_status": "Translations records created"})
+        update_main_article(article["Id"])#, {"translations_record_status": "Translations records created"})
         
 # Run the script
 process_articles()
