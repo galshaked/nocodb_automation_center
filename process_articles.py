@@ -35,9 +35,7 @@ def get_main_articles():
         temp_art = articles_list[i]  # Get the dictionary
         print("Article:", temp_art)  # Debugging print
         temp_ID = temp_art.get("Id")  # Extract "Id"
-    
-        if temp_ID is not None:  # Ensure valid ID before adding
-            ID_list.append(temp_ID)  # Append instead of assigning
+        ID_list.append(temp_ID)  # Append instead of assigning
     
         print("Updated ID List:", ID_list)  # Debugging print
         
