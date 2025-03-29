@@ -46,8 +46,9 @@ def create_translation_records(article_serial):
     print(languages)
     for lang in languages:
         payload = {
-            "Main Article": article_serial,  # Linking to the main article
-            "Language Code": lang,  # Assigning language
+        #    "Main Article": article_serial,  # Linking to the main article
+        #    "Language Code": lang,  # Assigning language
+            "Priority": "Low"
         }
         print("test lang and serial:" , lang, article_serial)
         print(payload)
