@@ -25,7 +25,7 @@ def get_main_articles():
     response = requests.get(url, headers=HEADERS, params=querystring)
     print("Response Status Code:", response.status_code)
     print("Response JSON main_articles:")
-    print(response.json())
+    print(response.json().get("list", []))
     
     return response.json().get("list", [])  # Assuming "data" contains the records
 
@@ -79,6 +79,6 @@ def process_articles():
         print("article serial:", article["Serial #"])
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
         update_main_article(article["Serial #"], {"translations_record_status": "Translations records created"})
-
+        
 # Run the script
 process_articles()
