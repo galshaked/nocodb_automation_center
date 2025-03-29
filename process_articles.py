@@ -27,11 +27,17 @@ def get_main_articles():
     print("Response JSON main_articles:")
     print(response.json().get("list", []))
     #######################################
-    a = response.json().get("list", [])
-    a = a[0]
-    print(a)
-    b = a.get("Id")
-    print(b)
+    articles_list = response.json().get("list", [])
+    j = 0
+    ID_list = []
+    for i in length(articles_list)
+        temp_art = articles_list[i-1]
+        print(temp_art)
+        temp_ID = temp_art.get("Id")
+        ID_list[i-1] = temp_ID
+        print(ID_list)
+        end
+        
     return response.json().get("list", [])  # Assuming "data" contains the records
 
 def get_languages():
