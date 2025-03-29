@@ -28,7 +28,8 @@ def get_main_articles():
     print(response.json().get("list", []))
     #######################################
     a = response.json().get("list", [])
-    a = a(0)
+    print(a)
+    a = a(end)
     print(a)
     b = a.get("Id")
     print(b)
