@@ -78,6 +78,7 @@ def update_main_article(article_serial, updates):
         "data": updates
     }
     print(update_payload)
+    print(article_serial)
     requests.patch(url, headers=HEADERS, json=update_payload)
 
 def process_articles():
