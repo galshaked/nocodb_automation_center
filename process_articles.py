@@ -73,9 +73,10 @@ def update_main_article(article_serial, updates):
     """Update the main article's status."""
     print("IM in update_main_article def")
  #   temp_ID = temp_art.get("Id")  # Extract "Id"
-    url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records/{article_serial}"
+    url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records"#/{article_serial}"
     update_payload = {
-        "data": updates
+       "Id": article_serial,
+       updates
     }
     print(update_payload)
     print(article_serial)
