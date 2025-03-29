@@ -29,14 +29,17 @@ def get_main_articles():
     #######################################
     articles_list = response.json().get("list", [])
     
-    ID_list = []
-    for i = 0:length(articles_list)-1
-        temp_art = articles_list[i]
-        print(temp_art)
-        temp_ID = temp_art.get("Id")
-        ID_list[i] = temp_ID
-        print(ID_list)
-        end
+     ID_list = []
+
+    for i in range(len(articles_list)):  # Iterate over the indices
+        temp_art = articles_list[i]  # Get the dictionary
+        print("Article:", temp_art)  # Debugging print
+        temp_ID = temp_art.get("Id")  # Extract "Id"
+    
+        if temp_ID is not None:  # Ensure valid ID before adding
+            ID_list.append(temp_ID)  # Append instead of assigning
+    
+        print("Updated ID List:", ID_list)  # Debugging print
         
     return response.json().get("list", [])  # Assuming "data" contains the records
 
