@@ -31,15 +31,15 @@ def get_main_articles():
     
     ID_list = []
 
-    for i in range(len(articles_list)):  # Iterate over the indices
-        temp_art = articles_list[i]  # Get the dictionary
-        print("Article:", temp_art)  # Debugging print
-        temp_ID = temp_art.get("Id")  # Extract "Id"
-        ID_list.append(temp_ID)  # Append instead of assigning
+   # for i in range(len(articles_list)):  # Iterate over the indices
+    #    temp_art = articles_list[i]  # Get the dictionary
+    #    print("Article:", temp_art)  # Debugging print
+     #   temp_ID = temp_art.get("Id")  # Extract "Id"
+     #   ID_list.append(temp_ID)  # Append instead of assigning
     
-        print("Updated ID List:", ID_list)  # Debugging print
-        
-    return response.json().get("list", [])  # Assuming "data" contains the records
+     #   print("Updated ID List:", ID_list)  # Debugging print
+        #response.json().get("list", [])
+    return articles_list # ,ID_list #response.json().get("list", [])  # Assuming "data" contains the records
 
 def get_languages():
     """Fetch available languages from the Languages table."""
@@ -72,6 +72,7 @@ def create_translation_records(article_serial):
 def update_main_article(article_serial, updates):
     """Update the main article's status."""
     print("IM in update_main_article def")
+ #   temp_ID = temp_art.get("Id")  # Extract "Id"
     url = f"{NOCO_BASE_URL}/tables/{MAIN_ARTICLES_TABLE}/records/{article_serial}"
     update_payload = {
         "data": updates
@@ -85,12 +86,13 @@ def process_articles():
     print("finished get main articles")
     print(articles)
     print(f"Articles after function call: {len(articles)}")
+  
     for article in articles:
         print("main loop check")
         print("Article Data:", article)
         print("article serial:", article["Serial #"])
         create_translation_records(article["Serial #"])  # Use the 'id' field from the main article
-        update_main_article(article["Serial #"], {"translations_record_status": "Translations records created"})
+        update_main_article(article["Id"], {"translations_record_status": "Translations records created"})
         
 # Run the script
 process_articles()
