@@ -28,13 +28,13 @@ def get_main_articles():
     print(response.json().get("list", []))
     #######################################
     articles_list = response.json().get("list", [])
-    j = 0
+    
     ID_list = []
-    for i in length(articles_list)
-        temp_art = articles_list[i-1]
+    for i = 0:length(articles_list)-1
+        temp_art = articles_list[i]
         print(temp_art)
         temp_ID = temp_art.get("Id")
-        ID_list[i-1] = temp_ID
+        ID_list[i] = temp_ID
         print(ID_list)
         end
         
