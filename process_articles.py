@@ -28,8 +28,10 @@ def get_main_articles():
     print(response.json().get("list", []))
     #######################################
     a = response.json().get("list", []),
-    a = a(0) ,
+    a = a(0)
+    print(a)
     b = a.get("Id")
+    print(b)
     return response.json().get("list", [])  # Assuming "data" contains the records
 
 def get_languages():
